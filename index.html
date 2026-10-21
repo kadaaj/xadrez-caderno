@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Xadrez de Caderno</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <svg id="defs-pecas" class="defs-ocultas" aria-hidden="true" focusable="false"></svg>
+
+    <div class="folha">
+      <div class="enfeites" id="enfeites" aria-hidden="true"></div>
+
+      <main class="mesa">
+        <aside class="lado-esquerdo" aria-label="Recados">
+          <div class="recado" id="recado">
+            <p id="recado-texto"></p>
+          </div>
+        </aside>
+
+        <section class="centro" aria-label="Tabuleiro">
+          <div class="moldura" id="moldura">
+            <p class="demo-legenda" id="demo-legenda" hidden aria-live="polite"></p>
+            <button type="button" class="botao demo-sair" id="demo-sair" hidden>sair da demonstração (Esc)</button>
+            <svg id="tabuleiro" role="img" aria-label="Tabuleiro de xadrez desenhado a lápis"></svg>
+
+            <div class="bilhete promocao" id="promocao" hidden>
+              <p class="bilhete-titulo">vira o quê?</p>
+              <div class="opcoes-promocao" id="opcoes-promocao"></div>
+              <button type="button" class="link-cancelar" id="cancelar-promocao">cancelar</button>
+            </div>
+
+            <div class="bilhete resultado" id="resultado" hidden role="dialog" aria-labelledby="resultado-titulo">
+              <span class="fita" aria-hidden="true"></span>
+              <p class="resultado-titulo" id="resultado-titulo"></p>
+              <p class="resultado-detalhe" id="resultado-detalhe"></p>
+              <div class="resultado-acoes">
+                <button type="button" class="botao" id="resultado-nova">nova partida</button>
+                <button type="button" class="link-cancelar" id="resultado-fechar">ver o tabuleiro</button>
+              </div>
+            </div>
+          </div>
+          <p class="status" id="vez" aria-live="polite"></p>
+        </section>
+
+        <section class="painel" aria-label="Controles da partida">
+          <header class="cabecalho">
+            <h1><span class="t1">Xadrez</span> <span class="t2">de Caderno</span></h1>
+            <p class="subtitulo" id="subtitulo"></p>
+          </header>
+
+          <div class="acoes">
+            <button type="button" class="botao" id="btn-nova" title="Nova partida (N)">nova partida</button>
+            <button type="button" class="botao" id="btn-desfazer" title="Desfazer (Ctrl+Z)">desfazer</button>
+            <button type="button" class="botao" id="btn-girar" title="Girar o tabuleiro (G)">girar</button>
+            <button type="button" class="botao" id="btn-demo" title="Ver uma partida de demonstração (D)">demonstração</button>
+            <button type="button" class="botao" id="btn-som" aria-pressed="true" title="Som (S)">som: ligado</button>
+          </div>
+          <div class="aviso-empate" id="aviso-empate" hidden>
+            <span id="aviso-empate-texto"></span>
+            <button type="button" class="botao pequeno" id="btn-reivindicar">reivindicar empate</button>
+          </div>
+
+          <div class="ajustes">
+            <div class="linha-ajuste" role="radiogroup" aria-label="Modo de jogo">
+              <span class="rotulo">modo:</span>
+              <button type="button" class="opcao" data-modo="computador" role="radio">contra o computador</button>
+              <button type="button" class="opcao" data-modo="dois" role="radio">2 jogadores</button>
+            </div>
+            <div class="linha-ajuste" id="linha-nivel" role="radiogroup" aria-label="Dificuldade">
+              <span class="rotulo">nível:</span>
+              <button type="button" class="opcao" data-nivel="facil" role="radio">fácil</button>
+              <button type="button" class="opcao" data-nivel="medio" role="radio">médio</button>
+              <button type="button" class="opcao" data-nivel="dificil" role="radio">difícil</button>
+            </div>
+            <div class="linha-ajuste" id="linha-cor" role="radiogroup" aria-label="Sua cor">
+              <span class="rotulo">você joga de:</span>
+              <button type="button" class="opcao" data-cor="w" role="radio">brancas</button>
+              <button type="button" class="opcao" data-cor="b" role="radio">pretas</button>
+            </div>
+          </div>
+
+          <div class="capturas" id="capturas"></div>
+
+          <div class="bloco-lances">
+            <h2>lances</h2>
+            <ol class="lista-lances" id="lista-lances"></ol>
+          </div>
+
+          <p class="rodape">salvo sozinho neste navegador · atalhos: N, Ctrl+Z, G, S, D</p>
+        </section>
+      </main>
+
+      <div class="abertura" id="abertura" hidden>
+        <p class="ab ab1"><span class="t1">Xadrez</span> <span class="t2">de Caderno</span></p>
+        <p class="ab ab2">cada peça é um bichinho</p>
+        <p class="ab ab3">e capturar é pessoal</p>
+        <p class="ab-pular">clique para pular</p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
